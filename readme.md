@@ -15,7 +15,18 @@ The experiment features two distinct modes of AI assistance:
 This project was developed as part of a bachelor thesis at the Technical University of Berlin titled "The Use of Large Language Models in First-Price Auctions: Development of an oTree Experiment". The thesis examines how AI-based decision aids can influence strategic bidding behavior in experimental economic contexts.
 
 ### Abstract
-This bachelor thesis investigates the use of Large Language Models (LLMs) in first-price auctions with a focus on developing an experimental framework using oTree. In experimental economic contexts, the question increasingly arises of how AI-based decision aids can influence strategic bidding behavior. This work conceptualizes and implements a flexible oTree experiment that enables various AI strategies such as risk-averse or basic bidding behavior through the integration of Google Gemini. Particular attention is paid to creating effective LLM prompts, dynamically adapting bidding strategies, and ensuring the technical robustness of the implementation. The developed framework not only allows the investigation of different delegation and advice modes but also offers possibilities for extension with additional strategies or alternative LLMs through its modular structure. The results of this work provide methodological foundations for future research on AI-supported decision-making in economic experiments and highlight potentials as well as limitations of using LLMs in experimental auction contexts.
+This bachelor thesis examines the application of Large Language Models (LLMs) in first-price auctions,
+focusing on the development of an experimental framework using oTree. In experimental economic
+contexts, the question of how AI-based decision aids can influence strategic bidding behavior is
+increasingly relevant. This work conceptualizes and implements a flexible oTree experiment that
+enables various AI strategies such as risk-averse or basic bidding behavior through the integration of
+Google Gemini. Special attention is given to creating effective LLM prompts, dynamically adapting
+bidding strategies, and ensuring technical robustness of the implementation. The developed framework
+not only allows for the investigation of different delegation and advice modes but also offers possibilities
+for extension with additional strategies or alternative LLMs through its modular structure. The results of
+this work provide methodological foundations for future research on AI-supported decision-making in
+economic experiments and highlight both the potential and limitations of using LLMs in experimental
+auction contexts.
 
 ### Game Mechanics
 1. **Basic Setup**: Players are paired anonymously and participate in a first-price auction over multiple rounds.
