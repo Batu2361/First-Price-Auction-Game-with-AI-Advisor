@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load staticfiles i18n %}
+{% block title %}Final Results{% endblock %}
+
+{% block content %}
+<div class="card text-center shadow-sm" data-aos="zoom-in">
+  <div class="card-body">
+    <h3 class="mb-3">Final Payoff:</h3>
+    <p>
+      The relevant round for the final payment is:
+      <strong>Round {{ payment_round }}</strong>
+    </p>
+    <p>
+      Your Payoff in that round is:
+      <strong>{{ final_payoff }}</strong>
+    </p>
+    <div class="text-end mt-3">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+{% endblock %}

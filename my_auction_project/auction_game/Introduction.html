@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% block title %}Introduction{% endblock %}
+
+{% block content %}
+  <div class="card mb-4 shadow-sm" data-aos="fade-up">
+    <div class="card-body">
+      {% include_sibling "instructions.html" %}
+      <div class="text-end mt-3">
+        {{ next_button }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

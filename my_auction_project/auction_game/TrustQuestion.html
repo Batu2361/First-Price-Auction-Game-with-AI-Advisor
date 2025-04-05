@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load staticfiles i18n %}
+{% block title %}Trust in the AI{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm" data-aos="fade-up">
+  <div class="card-body">
+    <p>Your final payoff for this round: <strong>{{ pyoff }}</strong></p>
+    <p>
+      How much do you trust the AI after seeing this round's result?<br>
+      (1 = No trust, 4 = Full trust)
+    </p>
+    <form method="post">
+      <div class="mb-3">
+        {{ form.trust_in_ai }}
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

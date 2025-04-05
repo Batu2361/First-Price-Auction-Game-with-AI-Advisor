@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load staticfiles i18n %}
+{% block title %}Results{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm" data-aos="fade-up">
+  <div class="card-body">
+    <table class="table table-striped">
+      <tr>
+        <th>Your Valuation</th>
+        <td>{{ valuation }}</td>
+      </tr>
+      <tr>
+        <th>Your (Final) Bid</th>
+        <td>{{ player.bid }}</td>
+      </tr>
+      <tr>
+        <th>Highest Bid in Group</th>
+        <td>{{ winning_bid }}</td>
+      </tr>
+      <tr>
+        <th>Did you win?</th>
+        <td>{% if is_winner %}Yes{% else %}No{% endif %}</td>
+      </tr>
+      <tr>
+        <th>Your Payoff</th>
+        <td>{{ pyoff }}</td>
+      </tr>
+    </table>
+    <hr>
+    <h4>Gemini Strategies:</h4>
+    {% if basic_strategy_enabled %}
+    <div class="alert alert-secondary">
+      <strong>Gemini Basic Strategy</strong><br>
+      Bid: {{ player.field_maybe_none("gemini_bid_basic") }}<br>
+      {% if show_explanations %}
+        Explanation: {{ player.field_maybe_none("gemini_explanation_basic") }}
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if risk_averse_strategy_enabled %}
+    <div class="alert alert-secondary">
+      <strong>Gemini Risk-Averse Strategy</strong><br>
+      Bid: {{ player.field_maybe_none("gemini_bid_risk_averse") }}<br>
+      {% if show_explanations %}
+        Explanation: {{ player.field_maybe_none("gemini_explanation_risk_averse") }}
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% comment %}
+    Für neue Stratgie
+
+    {% if aggressive_strategy_enabled %}
+    <div class="alert alert-secondary">
+      <strong>Gemini Aggressive Strategy</strong><br>
+      Bid: {{ player.field_maybe_none("gemini_bid_aggressive") }}<br>
+      {% if show_explanations %}
+        Explanation: {{ player.field_maybe_none("gemini_explanation_aggressive") }}
+      {% endif %}
+    </div>
+    {% endif %}
+    {% endcomment %}
+
+    <div class="text-end mt-3">
+      {{ next_button }}
+    </div>
+  </div>
+</div>
+{% endblock %}

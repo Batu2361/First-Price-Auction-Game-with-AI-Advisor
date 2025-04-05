@@ -1,0 +1,94 @@
+{% extends "global/Page.html" %}
+{% load staticfiles i18n %}
+{% block title %}Gemini Bid Options{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm" data-aos="fade-up">
+  <div class="card-body">
+
+    <!-- Zeige immer das eigene Gebot -->
+    <p><strong>Your bid:</strong> {{ own_bid }}</p>
+
+    <!-- Nur anzeigen, wenn mind. eine Gemini-Strategie verfügbar ist -->
+    {% if enable_gemini %}
+    <table class="table table-striped">
+      {% if gemini_bid_basic %}
+      <tr>
+        <th>Gemini Basic-Bid</th>
+        <td>
+          {{ gemini_bid_basic }}
+          {% if show_explanations %}
+            <br><small class="text-muted">{{ gemini_explanation_basic }}</small>
+          {% endif %}
+        </td>
+      </tr>
+      {% endif %}
+      {% if gemini_bid_risk_averse %}
+      <tr>
+        <th>Gemini Risk-Averse-Bid</th>
+        <td>
+          {{ gemini_bid_risk_averse }}
+          {% if show_explanations %}
+            <br><small class="text-muted">{{ gemini_explanation_risk_averse }}</small>
+          {% endif %}
+        </td>
+      </tr>
+      {% endif %}
+
+      {% comment %}
+      Für neue Strategie
+      {% if gemini_bid_aggressive %}
+
+      <tr>
+        <th>Gemini Aggressive-Bid</th>
+        <td>
+          {{ gemini_bid_aggressive }}
+          {% if show_explanations %}
+            <br><small class="text-muted">{{ gemini_explanation_aggressive }}</small>
+          {% endif %}
+        </td>
+      </tr>
+      {% endif %}
+    {% endcomment %}
+    </table>
+    {% else %}
+    <!-- Wenn keine Gemini-Strategie da ist -->
+    <div class="alert alert-info">
+      <em>There are no AI strategies available.</em>
+    </div>
+    {% endif %}
+
+    <hr>
+    <!-- Formular für die Auswahloption -->
+    <form method="post">
+
+      <div class="mb-3">
+        <label for="chosen_bid_type" class="form-label">Choose your option:</label>
+        <select class="form-select" name="chosen_bid_type" id="chosen_bid_type">
+          <!-- Player kann entweder bei seinem eigenen Gebot bleiben oder es anpassen -->
+          <option value="stick">Stick to my option ({{ own_bid }})</option>
+          <option value="adjust">Change Own Bid</option>
+        </select>
+      </div>
+
+      <!-- Eingabefeld für neues Gebot (wird nur angezeigt, wenn "anpassen" gewählt) -->
+      <div class="mb-3" id="adjustBidDiv" style="display: none;">
+        <label for="adjusted_bid" class="form-label">
+          Enter new Bid (0 to {{ maximum_price }}):
+        </label>
+        <input type="number" name="adjusted_bid" id="adjusted_bid"
+               class="form-control" min="0" max="{{ maximum_price }}">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Zeige das Eingabefeld nur, wenn "Eigenes Gebot anpassen" gewählt wurde.
+  document.getElementById('chosen_bid_type').addEventListener('change', function() {
+    var adjustDiv = document.getElementById('adjustBidDiv');
+    adjustDiv.style.display = (this.value === 'adjust') ? 'block' : 'none';
+  });
+</script>
+{% endblock %}
