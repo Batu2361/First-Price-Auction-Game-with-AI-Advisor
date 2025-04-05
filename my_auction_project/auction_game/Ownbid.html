@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles i18n %}
+{% block title %}Place Your Own Bid{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm" data-aos="fade-up">
+  <div class="card-body">
+    <form method="post">
+      <p class="lead">Your Valuation: <strong>{{ valuation }}</strong></p>
+      <hr>
+      <div class="mb-3">
+        <label for="bid" class="form-label">Enter your bid (0 to {{ C.MAXIMUM_PRICE }}):</label>
+        {{ form.bid }}
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
