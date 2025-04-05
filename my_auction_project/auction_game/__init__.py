@@ -3,7 +3,7 @@ import google.generativeai as genai
 import random
 
 
-GOOGLE_API_KEY = 'AIzaSyAiCmtsRiIqoKKhQHPbauN4ujEGlj6xreE'
+GOOGLE_API_KEY = 'YOUR-API-KEY'
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash')
 
